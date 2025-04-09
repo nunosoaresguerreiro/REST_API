@@ -2,6 +2,9 @@
 
 import {PORT} from "./config/env.js";
 
+// import database
+import connectionDB from "./db/mongodb.js"
+
 //! server express
 import express from "express";
 
@@ -18,8 +21,9 @@ app.get("/", (req, res)=>{
 res.send("Welcome to my app!!!")
 })
 
-app.listen(PORT, ()=>{
-    console.log(`APP RUNNING ON http://localhost:${PORT}`)
+app.listen(PORT, async ()=>{
+    console.log(`APP RUNNING ON http://localhost:${PORT}`);
+    await connectionDB();
 })
 
 

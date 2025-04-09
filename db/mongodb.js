@@ -1,13 +1,14 @@
-
+import mongoose from "mongoose";
+import {DB_URI, NODE_ENV} from "../config/env.js"
 
 const connectionDB = async ()=>{
 
 try{
-await mongoose.connect("URL");
-console.log("estamos logados na base de dados")
+    await mongoose.connect(DB_URI);
+    console.log(`Database connected on ${NODE_ENV} mode`)
 } catch(err){
-console.log("ERRO NA CONEX DB:", err);
-process.exit(1);
+    console.log(err);
+    process.exit(1);
 }
 
 }
